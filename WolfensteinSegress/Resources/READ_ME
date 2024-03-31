@@ -1,0 +1,92 @@
+Welcome to my Wolfenstein 3D ripoff!
+CONTROLS:
+WASD for movement, same as original
+*But I added mouse dragging because its 2022 and theres a reason
+tank controls aren't used anymore
+Clicking the mouse fires your pistol, if you have enough ammo
+
+WORKS CITED:
+https://www.youtube.com/watch?v=eOCQfxRQ2pY | Wolfenstein 3D's map renderer
+^ Used this resource to get the complicated trig needed to work the raycaster
+https://www.spriters-resource.com/pc_computer/wolfenstein3d/
+^ This resource gave all the sprites in the game
+
+HOW TO CHECK EACH PROPOSAL:
+1. Map Reader:
+The second argument is initially set as "testing_room", which is a premade file
+that I set up to show off each feature of the game. It has everything that can
+be tested. However, there are a few other room files that can be switched to by
+changing the argument to any other .txt file in the Resource's folder besides
+this one. You can also add a second argument, "testing" to make the game render
+in 2D, which can be useful for some tests. You can also make your own .txt file
+for a custom map using the following key:
+'X' = Wall object
+'V' = the victory square that ends the game
+'2' = chemical barrel (decorative)
+'3' = concrete column (decorative)
+'A' = ammo pickup
+'H' = health pack
+'G' = grunt spawn point
+'S' = gold crown (gives score points
+'\n' = next line
+'P' = player spawn point
+
+2. Player spawn
+This can be checked by just loading the game. There is also a test case that
+shows that the player initializes in the correct position. You can also make a
+new custom map and verify that the player spawns at your new 'P' character
+
+3. Player movement
+You can check that you correctly turn and move forward with the camera. This can
+be seen as the game is running, but the correct turning and movement can be
+easier seen from above in the "testing" mode
+
+4. Wall collision
+This can be done by running up to a wall (or backing into one) and seeing that
+you do not collide or go past it. This is another test that is easier in the
+dedicated testing mode as you can see from above that you do not continue past
+the walls. You can also test any walls that you make from your new levels.
+
+5. Victory spot
+The victory spot visually looks like an inverted triangle that says "call
+apogee say aardwolf" for some inside joke reasons from the Wolfenstein team.
+Upon collision with said strange inverted triangle, your screen turns green and
+the hud image changes to be a smiling photo of our protagonist, thus giving you
+a victory message.
+
+6. Wall's raycast rendering
+The walls are rendered, as the specifications state, via 60 manual raycasts that
+shoot from the player based on their given rotation. The proper way to test this
+is to run the game and see that the walls render in a correct way, with farther
+walls growing smaller and closer walls growing larger. Horizontal and vertical
+wall sides are also a different color to make differentiation easier. the
+testing mode also is a good way to see that the raycasts are working
+correctly as it shows each step that the raycasts make on the way to their
+destination with circles in the horizontal and vertical directions.
+
+7. Enemies react to the player and start shooting:
+This can be seen really only in play. In the default testing_room, turning the
+corner into like the next chamber and looking at the enemies will cause them to
+begin the windup to shoot you. After looking at them, they switch to the "alive"
+state, wherein they will start a one second windup before shooting you, dealing
+and dealing damage.
+
+8. Shooting
+At any point, clicking the mouse button activiates an animation to shoot your
+pistol. The center point of the viewport is always stored as an internal
+variable that upon clicking, scans the whole like using the check_line_bits
+function, dealing damage to any grunts along the way. The grunts in the next
+chamber can be shot and react to your bullets, doing an animation both for
+taking damage and dying. They take 2 hits to kill.
+
+9. Players health is stored
+There is a UI that is constantly visible in the not testing game mode that
+always shows your health value, ammo count, and your score. The grunts can deal
+damage to you with their shots, and you can also hit the 'p' key (p for pain) to
+inflict damage on yourself for easier testing. Hitting 0 hp causes a game over
+screen to appear and changes your character icon to a dead one.
+
+10. Ammo caches
+There are ammo caches present in the default testing room that you can pick up
+that give you back 8 ammo. Your present ammo count is always stored in the UI,
+making it easy to see it working.

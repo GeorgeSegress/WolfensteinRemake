@@ -9,7 +9,11 @@ The Model.cxx file contains the actual raycasting information and is the most co
 All other scripts work standard to normal games, with player.cxx handling movement, and grunt.cxx handling rudimentary AI and enemy animations, etc.
 
 # Demonstrations
-Top down raycasting demonstration
-[LINK](https://youtube.com/shorts/aVMGVafDNmo)
-Full gameplay demonstration with combat, scoring, health pickups, and a win condition
+
+Full gameplay demonstration with combat, scoring, health pickups, and a win condition:
+
 [LINK](https://youtube.com/shorts/LtafD_69Ots?feature=share)
+
+Top down raycasting demonstration:
+
+[LINK](https://youtube.com/shorts/aVMGVafDNmo)
